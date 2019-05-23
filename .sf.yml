@@ -1,0 +1,76 @@
+environments:
+  - [Ubuntu, nodejs-8.9.4]
+env:
+  - APP_USER=app-nceaqg-ci
+  #
+  # Protecting the password of app-nceaqg-ci for sf-release:
+  # (/!\ remember that secure: entries are specific to a repo and must be regenerated for a different repo /!\)
+  # - secure : IP01u7D0don2JDnKEpIx9L78wvJfW1oU651iDpDJuDFIdIofhSMyMX1vly0enBeGkAxxRm1dRl+wogK3WW8oZLcpKz29UNKfaJjfCb5r4xHS67ggXP9tPGDQn4ws4fzPfijqOZh7TCtvrT070e+c4/cyfI62VfC+E/fGMBY9rZc=
+  # Define GIT_PASS
+  - secure : Gw7EfWyiR2wHDvj0y62wqNhcpDFe2E1oV73F/Ay8vq++RLbryAchg9dm9ngK2k55ntHnrNEITKbmfLFR6y0nK+rWjYkj9Xe+PZXmoliGiz4M+EXdFJhDdCcfiFek22y3d8fe0B16tK8Mx4bHWEd3bNDttF7JaulvStvI1GMVD4g=
+  #
+  # Now, here are the Artifactory credentials
+  - secure : A7sRggmVnSp4kSJOBjaR4CXT5DCc19FsErWA4yU7Kuu9iZM0uu14u3DgFkBEDO0NZwsX6ozH17aCVpQblxT9lSVSltzMIBdwmcsE6NuQ0Qj/YZGf4WjOx2q7QfJYTyKa0BrZTjgAl6oblfSaZDnOedZCfeP4kH8M1drI+OfLkFk=
+  - GIT_USER="https://app-ahp-adminui:"
+  - REPO_ADDRESS="@rndwww.nce.amadeus.net/git/scm/ahp-acl/amadeus-component-library.git"
+  - GIT_URL=$GIT_USER$GIT_PASS$REPO_ADDRESS
+build: |
+  node --version
+  npm install -g @angular/cli@6.1.2
+  npm install
+
+  # git
+  git remote add origin $GIT_URL
+  git branch
+  git fetch
+
+  # check if the last commit comes from robot account
+  AUTHOR_OF_LAST_COMMIT=$(git log -1 --pretty=format:'%an')
+  echo $AUTHOR_OF_LAST_COMMIT
+
+  # check the list of changed file of last commit
+  CHANGED_FILES_LIST=$(git diff --name-only HEAD~1)
+  echo $CHANGED_FILES_LIST
+
+  # trigger bump scripts if build is happening on master
+
+  if [[ ${SF_IS_PULL_REQUEST} == "false" ]] && [[ ${SF_BRANCH} == "master" ]] && [[ $AUTHOR_OF_LAST_COMMIT != "app-nceaqg-ci" ]]; then
+    if [[ $CHANGED_FILES_LIST =~ .*projects/grid* ]]; then
+      source .sf_scripts/bump.sh grid
+    fi
+    if [[ $CHANGED_FILES_LIST =~ .*projects/datepicker* ]]; then
+       source .sf_scripts/bump.sh datepicker
+    fi
+  fi
+
+  ng build datepicker
+  ng build grid
+  ng build
+publish: |
+  #
+  # Making sure we fail on the first command error or if an unset variable is used
+
+  set -o errexit
+  set -o nounset
+
+  #
+  # Making sure the npm configuration is ready for uploads,
+  #   publishing artifacts and tagging the code
+
+  # check if the last commit comes from robot account
+  AUTHOR_OF_LAST_COMMIT=$(git log -1 --pretty=format:'%an')
+  echo $AUTHOR_OF_LAST_COMMIT
+
+  # check the list of changed file of last commit
+  CHANGED_FILES_LIST=$(git diff --name-only HEAD~1)
+
+  # trigger bump scripts if build is happening on master
+  if [[ ${SF_IS_PULL_REQUEST} == "false" ]] && [[ ${SF_BRANCH} == "master" ]] && [[ $AUTHOR_OF_LAST_COMMIT != "app-nceaqg-ci" ]] && [[ ! -z "$CHANGED_FILES_LIST" ]]; then
+    if [[ $CHANGED_FILES_LIST =~ .*projects/grid* ]]; then
+           source .sf_scripts/push.sh grid
+    fi
+
+    if [[ $CHANGED_FILES_LIST =~ .*projects/datepicker* ]]; then
+       source .sf_scripts/push.sh datepicker
+    fi
+  fi
