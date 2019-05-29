@@ -1,14 +1,10 @@
 import {NgModule} from "@angular/core";
-import {AppComponent} from "./app.component";
 import {BrowserModule} from "@angular/platform-browser";
 import {AngularDirective} from "./angular/angular.directive";
-import {UpgradeModule} from "@angular/upgrade/static";
+import {downgradeComponent, UpgradeModule} from "@angular/upgrade/static";
 import * as angular from 'angular';
+import {AppComponent} from "./app.component";
 import {angularjsDirective} from "./angularjs/angularjs.directive";
-import {ContainerComponent} from "./angular/container.component";
-
-angular.module("angularjsModule", [])
-    .directive("angularjs-directive", angularjsDirective);
 
 @NgModule({
     imports: [
@@ -17,14 +13,9 @@ angular.module("angularjsModule", [])
     ],
     declarations: [
         AppComponent,
-        ContainerComponent,
         AngularDirective
     ],
     entryComponents: [
-        AppComponent,
-        ContainerComponent
-    ],
-    bootstrap: [
         AppComponent
     ]
 })
@@ -33,6 +24,13 @@ export class AppModule {
     }
 
     ngDoBootstrap() {
+        // Create main angularJs module
+        angular
+            .module("angularjsModule", [])
+            .directive("appRoot", downgradeComponent({component: AppComponent}))
+            .directive("angularjs-directive", angularjsDirective);
+
+        // Boostraping of the hybrid app
         this.upgrade.bootstrap(document.body, ["angularjsModule"], {strictDi: true});
     }
 }

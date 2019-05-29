@@ -1,9 +1,11 @@
-import {Component} from "@angular/core";
+import {Component} from '@angular/core';
 
 @Component({
     selector: "app-root",
-    templateUrl: "./app.component.html",
-    styleUrls: ["./app.component.css"]
+    template: `
+        AppComponent written in Angular and downgraded to AngularJS:
+        <angularjs-component></angularjs-component>
+    `
 })
 export class AppComponent {
 
