@@ -3,9 +3,13 @@ import {Component} from '@angular/core';
 @Component({
     selector: "app-root",
     template: `
-        AppComponent written in Angular and downgraded to AngularJS:
-        <angularjs-component></angularjs-component>
-    `
+        <div>
+            ROOT - AppComponent written in Angular and downgraded to AngularJS:
+            <br/>
+            <toggle-component></toggle-component>
+        </div>
+    `,
+    styleUrls: ["./app.component.less"]
 })
 export class AppComponent {
 

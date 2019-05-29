@@ -1,9 +1,11 @@
 import {Directive, ElementRef, Injector} from '@angular/core';
 import {UpgradeComponent} from '@angular/upgrade/static';
 
-@Directive({selector: "angularjs-component"})
-export class AngularDirective extends UpgradeComponent {
+@Directive({
+    selector: "toggle-component"
+})
+export class ToggleDirective extends UpgradeComponent {
     constructor(elementRef: ElementRef, injector: Injector) {
-        super("angularjs-directive", elementRef, injector);
+        super("toggle-ng1-directive", elementRef, injector);
     }
 }

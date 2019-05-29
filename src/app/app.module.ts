@@ -1,10 +1,10 @@
 import {NgModule} from "@angular/core";
 import {BrowserModule} from "@angular/platform-browser";
-import {AngularDirective} from "./angular/angular.directive";
+import {ToggleDirective} from "./toggle/toggle.directive";
 import {downgradeComponent, UpgradeModule} from "@angular/upgrade/static";
 import * as angular from 'angular';
 import {AppComponent} from "./app.component";
-import {angularjsDirective} from "./angularjs/angularjs.directive";
+import {toggleNg1Directive} from "./toggle/toggle-ng1.directive";
 
 @NgModule({
     imports: [
@@ -13,7 +13,7 @@ import {angularjsDirective} from "./angularjs/angularjs.directive";
     ],
     declarations: [
         AppComponent,
-        AngularDirective
+        ToggleDirective
     ],
     entryComponents: [
         AppComponent
@@ -28,7 +28,7 @@ export class AppModule {
         angular
             .module("angularjsModule", [])
             .directive("appRoot", downgradeComponent({component: AppComponent}))
-            .directive("angularjs-directive", angularjsDirective);
+            .directive("toggle-ng1-directive", toggleNg1Directive);
 
         // Boostraping of the hybrid app
         this.upgrade.bootstrap(document.body, ["angularjsModule"], {strictDi: true});
