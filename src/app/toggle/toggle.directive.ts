@@ -1,6 +1,18 @@
 import {Directive, ElementRef, Injector} from '@angular/core';
 import {UpgradeComponent} from '@angular/upgrade/static';
-import {toggleNg1Directive} from "./toggle-ng1.directive";
+
+export function toggleNg1Directive() {
+    return {
+        selector: "toggle",
+        restrict: 'E',
+        template: `
+            <div class="toggle">
+                Toggle written in AngularJS and upgraded to Angular
+            </div>
+        `,
+        controller: function() {}
+    };
+}
 
 @Directive({
     selector: toggleNg1Directive().selector
