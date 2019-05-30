@@ -25,12 +25,12 @@ export class AppModule {
 
     ngDoBootstrap() {
         // Create main angularJs module
-        angular
+        const module = angular
             .module("angularjsModule", [])
             .directive("appRoot", downgradeComponent({component: AppComponent}))
-            .directive("toggle-ng1-directive", toggleNg1Directive);
+            .directive(toggleNg1Directive().selector, toggleNg1Directive);
 
-        // Boostraping of the hybrid app
-        this.upgrade.bootstrap(document.body, ["angularjsModule"], {strictDi: true});
+        // Bootstrapping of the hybrid app
+        this.upgrade.bootstrap(document.body, [module.name], {strictDi: true});
     }
 }

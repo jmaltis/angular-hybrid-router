@@ -6,7 +6,7 @@ import {Component} from '@angular/core';
         <div>
             ROOT - AppComponent written in Angular and downgraded to AngularJS:
             <br/>
-            <toggle-component></toggle-component>
+            <toggle></toggle>
         </div>
     `,
     styleUrls: ["./app.component.less"]
