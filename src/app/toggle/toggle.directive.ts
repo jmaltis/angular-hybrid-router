@@ -4,13 +4,10 @@ import {UpgradeComponent} from '@angular/upgrade/static';
 export function toggleNg1Directive() {
     return {
         selector: "toggle",
-        restrict: 'E',
-        template: `
-            <div class="toggle">
-                Toggle written in AngularJS and upgraded to Angular
-            </div>
-        `,
-        controller: function() {}
+        restrict: "E",
+        template: require('./toggle.tpl.html'),
+        controller: function () {
+        }
     };
 }
 
