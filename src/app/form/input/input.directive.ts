@@ -1,4 +1,4 @@
-import {Directive, ElementRef, Injector, Input} from '@angular/core';
+import {Directive, ElementRef, EventEmitter, Injector, Input, Output} from '@angular/core';
 import {UpgradeComponent} from '@angular/upgrade/static';
 
 export function inputNg1Directive() {
@@ -61,6 +61,11 @@ export class InputDirective extends UpgradeComponent {
     @Input() label: string;
     @Input() inputId: string;
     @Input() mode: string;
+
+    // We need to declare these two properties.
+    // [(model)]="field" is the same as [model]="field" (modelChange)="field=$event"
+    @Input() model: string;
+    @Output() modelChange: EventEmitter<any> = new EventEmitter<any>();
 
     constructor(elementRef: ElementRef, injector: Injector) {
         super(inputNg1Directive().selector, elementRef, injector);
