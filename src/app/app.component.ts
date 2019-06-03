@@ -6,7 +6,9 @@ import {Component} from '@angular/core';
         <div>
             ROOT - AppComponent written in Angular and downgraded to AngularJS:
             <br/>
-            <toggle></toggle>
+            <ahp-input label="CHL_EUS_CODE"
+                       inputId="eusCode"
+                       mode="EDITABLE"></ahp-input>
         </div>
     `,
     styleUrls: ["./app.component.less"]

@@ -1,0 +1,24 @@
+<div class="{{::vm.css}} {{::vm.additionalLabel ? 'additional-label' : ''}} input"
+     valdr-enabled="vm.editable()"
+     valdr-form-group>
+    <label ng-class="vm.showRequired() ? 'control-label required' : 'control-label'"
+           for="{{::vm.inputId}}">
+        {{vm.label}}
+    </label>
+    <input uppercase
+           type="text"
+           name="{{::vm.inputId}}"
+           id="{{::vm.inputId}}"
+           class="form-control"
+           ng-model="vm.model"
+           ng-if="vm.showInput()"
+           ng-disabled="!vm.editable()"
+           autocomplete="nope">
+    <p class="form-control-static"
+       ng-if="vm.isDisplay()"
+       ng-bind="vm.model"></p>
+    <p class="{{vm.editable() ? 'add-label' : ''}} {{vm.isDisplay() ? 'form-control-static' : ''}}"
+       ng-if="vm.showAdditionalLabel()">
+        {{vm.additionalLabel}}
+    </p>
+</div>
