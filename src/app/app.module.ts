@@ -4,7 +4,7 @@ import {InputDirective} from "./form/input/input.directive";
 import {downgradeComponent, UpgradeModule} from "@angular/upgrade/static";
 import {AppComponent} from "./app.component";
 import {FormComponent} from "./form/form.component";
-import {default as angularJsModule} from '../ng-app/app.module.ajs';
+import {default as angularJsModule} from "../ng-app/app.module.ajs";
 
 @NgModule({
     imports: [

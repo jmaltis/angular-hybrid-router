@@ -1,12 +1,12 @@
-import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
+import {platformBrowserDynamic} from "@angular/platform-browser-dynamic";
 
-import {AppModule} from './app/app.module';
-import {setAngularJSGlobal} from '@angular/upgrade/static';
-import * as angular from 'angular';
+import {AppModule} from "./app/app.module";
+import {setAngularJSGlobal} from "@angular/upgrade/static";
+import * as angular from "angular";
 
 // Import angularJS files as modules
 declare const require: any;
-const context = require.context('./ng-app', true, /\.js$/);
+const context = require.context("./ng-app", true, /\.js$/);
 context.keys().forEach((file: any) => {
     try {
         context(file);

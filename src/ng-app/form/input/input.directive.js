@@ -1,11 +1,11 @@
-import * as template from './input.tpl.html';
+import * as template from "./input.tpl.html";
 
 (function () {
-    'use strict';
+    "use strict";
 
     angular
-        .module('angularjsModule')
-        .directive('ahp-input-js', function ahpInputDirective() {
+        .module("angularjsModule")
+        .directive("ahp-input-js", function ahpInputDirective() {
             return {
                 restrict: "E",
                 template: template, // require('./input.tpl.html') also works

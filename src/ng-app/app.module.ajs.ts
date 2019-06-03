@@ -1,3 +1,3 @@
-import * as angular from 'angular';
+import * as angular from "angular";
 
-export default angular.module('angularjsModule', []);
+export default angular.module("angularjsModule", []);
