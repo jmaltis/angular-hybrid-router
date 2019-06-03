@@ -1,9 +1,10 @@
 import {NgModule} from "@angular/core";
 import {BrowserModule} from "@angular/platform-browser";
-import {InputDirective, inputNg1Directive} from "./input/input.directive";
+import {InputDirective, inputNg1Directive} from "./form/input/input.directive";
 import {downgradeComponent, UpgradeModule} from "@angular/upgrade/static";
 import * as angular from 'angular';
 import {AppComponent} from "./app.component";
+import {FormComponent} from "./form/form.component";
 
 @NgModule({
     imports: [
@@ -12,6 +13,7 @@ import {AppComponent} from "./app.component";
     ],
     declarations: [
         AppComponent,
+        FormComponent,
         InputDirective
     ],
     entryComponents: [

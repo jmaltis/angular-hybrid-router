@@ -4,11 +4,9 @@ import {Component} from '@angular/core';
     selector: "app-root",
     template: `
         <div>
-            ROOT - AppComponent written in Angular and downgraded to AngularJS:
+            <span><strong>ROOT - AppComponent (Angular component)</strong> / <i>downgraded to AngularJS</i></span>
             <br/>
-            <ahp-input label="CHL_EUS_CODE"
-                       inputId="eusCode"
-                       mode="EDITABLE"></ahp-input>
+            <ahp-form></ahp-form>
         </div>
     `,
     styleUrls: ["./app.component.less"]

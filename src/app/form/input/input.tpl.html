@@ -1,6 +1,9 @@
 <div class="{{::vm.css}} {{::vm.additionalLabel ? 'additional-label' : ''}} input"
      valdr-enabled="vm.editable()"
      valdr-form-group>
+    <span><strong>Input (AngularJS directive)</strong> / <i>upgraded to Angular</i></span>
+    <br/>
+
     <label ng-class="vm.showRequired() ? 'control-label required' : 'control-label'"
            for="{{::vm.inputId}}">
         {{vm.label}}
