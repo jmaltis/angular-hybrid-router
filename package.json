@@ -1,5 +1,5 @@
 {
-    "name": "amadeus-component-library-app",
+    "name": "poc-hybrid-upgrade-app",
     "version": "0.0.0",
     "scripts": {
         "ng": "ng",
@@ -7,14 +7,7 @@
         "build": "ng build",
         "test": "ng test",
         "lint": "ng lint",
-        "e2e": "ng e2e",
-        "watch_lib_grid": "ng build grid --watch",
-        "watch_lib_datepicker": "ng build datepicker --watch",
-        "build_lib": "rm -rf dist && ng build datepicker && npm run npm_pack_datepicker && npm install && ng build --prod grid",
-        "npm_pack": "cd dist/grid && npm pack",
-        "npm_pack_datepicker": "cd dist/datepicker && npm pack",
-        "package": "npm run build_lib && npm run npm_pack",
-        "all": "npm run package && npm install datepicker && npm run start"
+        "e2e": "ng e2e"
     },
     "private": true,
     "dependencies": {

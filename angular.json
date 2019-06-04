@@ -3,7 +3,7 @@
     "version": 1,
     "newProjectRoot": "projects",
     "projects": {
-        "amadeus-component-library-app": {
+        "poc-hybrid-upgrade": {
             "root": "",
             "sourceRoot": "src",
             "projectType": "application",
@@ -13,7 +13,7 @@
                 "build": {
                     "builder": "@angular-devkit/build-angular:browser",
                     "options": {
-                        "outputPath": "dist/amadeus-component-library-app",
+                        "outputPath": "dist/poc-hybrid-upgrade",
                         "index": "src/index.html",
                         "main": "src/main.ts",
                         "polyfills": "src/polyfills.ts",
@@ -57,18 +57,18 @@
                 "serve": {
                     "builder": "@angular-devkit/build-angular:dev-server",
                     "options": {
-                        "browserTarget": "amadeus-component-library-app:build"
+                        "browserTarget": "poc-hybrid-upgrade:build"
                     },
                     "configurations": {
                         "production": {
-                            "browserTarget": "amadeus-component-library-app:build:production"
+                            "browserTarget": "poc-hybrid-upgrade:build:production"
                         }
                     }
                 },
                 "extract-i18n": {
                     "builder": "@angular-devkit/build-angular:extract-i18n",
                     "options": {
-                        "browserTarget": "amadeus-component-library-app:build"
+                        "browserTarget": "poc-hybrid-upgrade:build"
                     }
                 },
                 "test": {
@@ -102,7 +102,7 @@
                 }
             }
         },
-        "amadeus-component-library-app-e2e": {
+        "poc-hybrid-upgrade-e2e": {
             "root": "e2e/",
             "projectType": "application",
             "architect": {
@@ -110,11 +110,11 @@
                     "builder": "@angular-devkit/build-angular:protractor",
                     "options": {
                         "protractorConfig": "e2e/protractor.conf.js",
-                        "devServerTarget": "amadeus-component-library-app:serve"
+                        "devServerTarget": "poc-hybrid-upgrade:serve"
                     },
                     "configurations": {
                         "production": {
-                            "devServerTarget": "amadeus-component-library-app:serve:production"
+                            "devServerTarget": "poc-hybrid-upgrade:serve:production"
                         }
                     }
                 },
@@ -130,5 +130,5 @@
             }
         }
     },
-    "defaultProject": "amadeus-component-library-app"
+    "defaultProject": "poc-hybrid-upgrade"
 }
