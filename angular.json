@@ -27,8 +27,7 @@
                             "src/ng-app/app.less",
                             "src/ng-app/form/form.less",
                             "src/ng-app/sample/styles/sample.less",
-                            "./node_modules/bootstrap/dist/css/bootstrap.min.css",
-                            "./node_modules/font-awesome/css/font-awesome.css"
+                            "./node_modules/bootstrap/dist/css/bootstrap.min.css"
                         ],
                         "scripts": [
                             "./node_modules/angular/angular.js",
