@@ -3,9 +3,8 @@ import {Component} from "@angular/core";
 @Component({
     selector: "ahp-form",
     template: `
-        <div class="ahp-form">
-            <span><strong>Form component (Angular component)</strong></span>
-            <br/>
+        <div class="ahp-form spaced">
+            <h2>Form component (Angular component)</h2>
             Input value in Angular: {{field}}
             <br/>
             <ahp-input label="LABEL_CODE"

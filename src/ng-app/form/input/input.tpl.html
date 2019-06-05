@@ -1,9 +1,7 @@
 <form>
-    <div class="{{::vm.css}} {{::vm.additionalLabel ? 'additional-label' : ''}} input-wrapper"
+    <div class="{{::vm.css}} {{::vm.additionalLabel ? 'additional-label' : ''}} input-wrapper spaced"
          valdr-type="InputTestConstraint">
-        <span><strong>Input (AngularJS directive)</strong> / <i>upgraded to Angular</i></span>
-        <br/>
-
+        <h3>Input (AngularJS directive)</strong> / <i>upgraded to Angular</i></h3>
         <div valdr-form-group>
             <label ng-class="vm.showRequired() ? 'control-label required' : 'control-label'"
                    for="{{::vm.inputId}}">

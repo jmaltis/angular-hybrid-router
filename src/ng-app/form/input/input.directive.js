@@ -32,7 +32,7 @@ import * as template from "./input.tpl.html";
                     };
 
                     var vm = this;
-                    vm.css = vm.css || "col-sm-4 form-group";
+                    vm.css = vm.css || "col-sm-6";
 
                     vm.editable = function editable() {
                         return vm.mode === DISPLAY_MODES.EDITABLE;
