@@ -1,8 +1,7 @@
 import {NgModule} from "@angular/core";
 import {BrowserModule} from "@angular/platform-browser";
 import {InputDirective} from "./form/input/input.directive";
-import {downgradeComponent, UpgradeModule} from "@angular/upgrade/static";
-import {AppComponent} from "./app.component";
+import {UpgradeModule} from "@angular/upgrade/static";
 import {FormComponent} from "./form/form.component";
 import {default as angularJsModule} from "../ng-app/app.module.ajs";
 import {UIRouterUpgradeModule} from "@uirouter/angular-hybrid";
@@ -14,12 +13,10 @@ import {UIRouterUpgradeModule} from "@uirouter/angular-hybrid";
         UIRouterUpgradeModule.forRoot(),
     ],
     declarations: [
-        AppComponent,
         FormComponent,
         InputDirective
     ],
     entryComponents: [
-        AppComponent,
         FormComponent
     ]
 })
@@ -28,9 +25,6 @@ export class AppModule {
     }
 
     ngDoBootstrap() {
-        // Add downgraded component to Angular JS main module
-        angularJsModule.directive("appRoot", downgradeComponent({component: AppComponent}));
-
         // Bootstrapping of the hybrid app
         this.upgrade.bootstrap(document.body, [angularJsModule.name], {strictDi: true});
     }

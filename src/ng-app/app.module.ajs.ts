@@ -28,16 +28,13 @@ angularjsModule.run(["valdr", "valdrMessage",
 
 angularjsModule.run(["$stateRegistry", "$urlService",
     ($stateRegistry, $urlService) => {
+        // Set initial route to app state (displaying appTemplate)
         $urlService.rules.initial({state: "app"});
 
         $stateRegistry.register({
             url: "",
             name: "app",
-            template: `
-        <a ui-sref=".ng1" ui-sref-active-eq="active">AngularJs route (controller / template)</a>
-        <a ui-sref=".ng2" ui-sref-active-eq="active">Angular route (component)</a>
-        <ui-view></ui-view>
-      `,
+            template: require("./app.tpl.html")
         });
 
         // route to ng1 (AngularJS)
@@ -60,6 +57,7 @@ angularjsModule.run(["$stateRegistry", "$urlService",
 
 angularjsModule.config(["$urlServiceProvider", "$locationProvider", "$urlRouterProvider",
     (urlService: UrlService, locationProvider, routerProvider) => {
+        // Tell UI-Router that it should wait until all bootstrapping is complete before doing the initial URL synchronization
         urlService.deferIntercept();
         locationProvider.hashPrefix("");
         routerProvider.otherwise("/");
