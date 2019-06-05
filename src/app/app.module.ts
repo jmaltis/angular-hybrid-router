@@ -5,11 +5,13 @@ import {downgradeComponent, UpgradeModule} from "@angular/upgrade/static";
 import {AppComponent} from "./app.component";
 import {FormComponent} from "./form/form.component";
 import {default as angularJsModule} from "../ng-app/app.module.ajs";
+import {UIRouterUpgradeModule} from "@uirouter/angular-hybrid";
 
 @NgModule({
     imports: [
         BrowserModule,
-        UpgradeModule
+        UpgradeModule,
+        UIRouterUpgradeModule.forRoot(),
     ],
     declarations: [
         AppComponent,
@@ -17,7 +19,8 @@ import {default as angularJsModule} from "../ng-app/app.module.ajs";
         InputDirective
     ],
     entryComponents: [
-        AppComponent
+        AppComponent,
+        FormComponent
     ]
 })
 export class AppModule {
